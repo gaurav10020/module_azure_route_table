@@ -1,0 +1,31 @@
+variable "route_table_name" {
+  description = "The name of the route table."
+  type        = string
+}
+
+variable "location" {
+  description = "The Azure region where the route table will be created."
+  type        = string
+}
+
+variable "resource_group_name" {
+  description = "The name of the resource group."
+  type        = string
+}
+
+variable "tags" {
+  description = "A mapping of tags to assign to the resource."
+  type        = map(string)
+  default     = {}
+}
+
+variable "routes" {
+  description = "A map of routes to create in the route table."
+  type = map(object({
+    name                   = string
+    address_prefix         = string
+    next_hop_type          = string
+    next_hop_in_ip_address = optional(string)
+  }))
+  default = {}
+}
