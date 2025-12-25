@@ -16,3 +16,9 @@ resource "azurerm_route" "route" {
   next_hop_type          = each.value.next_hop_type
   next_hop_in_ip_address = each.value.next_hop_in_ip_address
 }
+
+resource "azurerm_subnet_route_table_association" "subnet_route_table_association" {
+  subnet_id      = var.subnet_id
+  route_table_id = azurerm_route_table.route_table.id
+}
+

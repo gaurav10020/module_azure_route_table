@@ -29,3 +29,8 @@ variable "routes" {
   }))
   default = {}
 }
+
+variable "subnet_id" {
+  description = "The ID of the subnet to associate with the route table."
+  type        = string
+}
